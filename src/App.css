@@ -1,0 +1,11 @@
+.panel {
+    background-color: #EEE;
+    border-radius: 1em;
+    margin-bottom: 1em;
+}
+.margin-left {
+    margin-left: 2em;
+}
+.pull-right {
+    float: right;
+}
