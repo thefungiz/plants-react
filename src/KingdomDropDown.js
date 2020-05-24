@@ -7,15 +7,21 @@ const KingdomDropDown = () => {
     const [kingdoms, setKingdoms] = useState([]);
     const token = properties.token;
 
-    const handleLoad = (linkPath, setState) => {
+    const handleLoad = (linkPath, setState, callback) => {
         let path = linkPath.substring(linkPath.indexOf('/api'));
         axios.get(`${path}?token=${token}`)
             .then(resp => {
                 setState(resp.data);
+                callback && callback();
             })
             .catch(error => {
                 console.error(error);
+                callback && callback(); 
             });
+    }
+
+    const handleImageRequest = (name, setState) => {
+        // todo
     }
 
     useEffect(() => {

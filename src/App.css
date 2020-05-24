@@ -1,7 +1,11 @@
 .panel {
     background-color: #EEE;
-    border-radius: 1em;
     margin-bottom: 1em;
+    padding: 1em;
+    overflow: auto;
+}
+.center {
+    text-align: center;
 }
 .margin-left {
     margin-left: 2em;

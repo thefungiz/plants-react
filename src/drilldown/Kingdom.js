@@ -11,7 +11,7 @@ const Kingdom = ({data, onLoad}) => {
     return (
         <div>
             <div className="panel">
-                <h2>Kingdom: {data.name}</h2>
+                <h2 className="center">Kingdom: {data.name}</h2>
             </div>
             <div className="margin-left">
                 {subkingdoms && subkingdoms.map((subkingdom, i) => {

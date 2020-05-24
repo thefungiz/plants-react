@@ -14,7 +14,7 @@ const App = () => {
       <div>
         <nav className="navbar pure-menu pure-menu-horizontal header-margin-bottom">
           <a href="#" className="pure-menu-heading pure-menu-link ">Plants!</a>
-          <NavLink className="pure-menu-heading pure-menu-link" to="/drill">Drill down</NavLink>
+          <NavLink className="pure-menu-heading pure-menu-link" to="/drill">Kingdom Dropdown</NavLink>
         </nav>
         <ul className="header header-style">
         </ul>

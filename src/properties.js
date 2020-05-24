@@ -1,4 +1,4 @@
 
 export const properties = {
-    token: '[insert token here]' // create account here https://trefle.io/reference#operation/list_genuses
+    token: prompt("Please enter API key. One can be created here - https://trefle.io/")// override this for easier local development
 } 
