@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import Kingdom from './drilldown/Kingdom';
+import Kingdom from './familytree/Kingdom';
 import axios from 'axios';
 import { properties } from './properties';
 
-const KingdomDropDown = () => {
+const FamilyTree = () => {
     const [kingdoms, setKingdoms] = useState([]);
     const token = properties.token;
 
@@ -25,7 +25,7 @@ const KingdomDropDown = () => {
 
     return (
         <>
-            <h1>Kingdom Dropdown</h1>
+            <h1>Family Tree</h1>
             {kingdoms && kingdoms.map((kingdom, i) => {
                 return <Kingdom key={i} data={kingdom} onLoad={handleLoad} />
             })}
@@ -33,4 +33,4 @@ const KingdomDropDown = () => {
     );
 }
 
-export default KingdomDropDown;
+export default FamilyTree;
