@@ -1,14 +1,14 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
-const LoadImages = ({ name }) => {
+const LoadImages = ({ data }) => {
     const [images, setImages] = useState([]);
     const [clicked, setClicked] = useState(false);
-    const ignoreImages = ['https://upload.wikimedia.org/wikipedia/commons/7/74/Red_Pencil_Icon.png'];
+    const ignoreImages = ['https://upload.wikimedia.org/wikipedia/commons/7/74/Red_Pencil_Icon.png', 'https://upload.wikimedia.org/wikipedia/en/4/4a/Commons-logo.svg', 'https://upload.wikimedia.org/wikipedia/commons/d/df/Wikispecies-logo.svg'];
 
     const getImages = () => {
         setClicked(true);
-        axios.get(`https://cors-anywhere.herokuapp.com/https://en.wikipedia.org/w/api.php?action=query&format=json&prop=images&titles=${name}`)
+        axios.get(`https://cors-anywhere.herokuapp.com/https://en.wikipedia.org/w/api.php?action=query&format=json&prop=images&titles=${data.scientificName}`)
         .then(resp => {
             const images = Object.values(resp.data.query.pages)[0].images;
             if (images) {
@@ -30,6 +30,11 @@ const LoadImages = ({ name }) => {
             console.error(error);
         });
     }
+
+    useEffect(() => {
+        setImages([]);
+        setClicked(false);
+    }, [data]);
 
     return (
         <div>

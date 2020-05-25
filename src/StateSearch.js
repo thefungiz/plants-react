@@ -4,6 +4,8 @@ import SpeciesRecord from './state/SpeciesRecord';
 import Pagination from './pagination/Pagination';
 
 const StateSearch = () => {
+    const states = ["AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MH", "MA", "MI", "FM", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "VI", "WA", "WV", "WI", "WY"];
+    const [selectedState, setSelectedState] = useState("AL");
     const [result, setResult] = useState(undefined);
     const [page, setPage] = useState(0);
     const [recordsPerPage, setRecordsPerPage] = useState(20);
@@ -18,7 +20,7 @@ const StateSearch = () => {
                     recordsPerPage
                 },
                 "locationCriteria":
-                    [{ "paramType": "subnation", "subnation": "NE", "nation": "US" }],
+                    [{ "paramType": "subnation", "subnation": selectedState, "nation": "US" }],
                 "speciesTaxonomyCriteria":
                     [{ "paramType": "scientificTaxonomy", "level": "KINGDOM", "scientificTaxonomy": "Plantae" }]
             })
@@ -29,7 +31,7 @@ const StateSearch = () => {
             .catch(error => {
                 console.error(error);
             });
-    }, [page, recordsPerPage]);
+    }, [selectedState, page, recordsPerPage]);
 
     return (
         <>
@@ -38,7 +40,13 @@ const StateSearch = () => {
                 {result && result.resultsSummary && <Pagination resultsSummary={result.resultsSummary} setPage={setPage} setRecordsPerPage={setRecordsPerPage} />}
             </div>
             <div>
-                {result && (<p>Total species found for NE: {result.resultsSummary.speciesResults.total}</p>)}
+                Select a state:
+                <select onChange={e => setSelectedState(e.currentTarget.value)}>
+                    {states.map((state, i) => { return <option key={state} value={state}>{state}</option> })}
+                </select>
+            </div>
+            <div>
+                {result && (<p>Total species found for {selectedState}: {result.resultsSummary.speciesResults.total}</p>)}
                 {result && result.results.map((speciesRecord, i) => {
                     return <SpeciesRecord key={i} data={speciesRecord} />
                 })}

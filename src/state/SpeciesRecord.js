@@ -49,7 +49,7 @@ const SpeciesRecord = ({ data }) => {
             <div><div>Wikipedia:</div>
             {loadingDescription ? (<p>Loading additional information...</p>) : ReactHtmlParser(description)}
             </div>
-            <LoadImages name={data.scientificName} />
+            <LoadImages data={data} />
         </div>
     );
 };
