@@ -1,18 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import SpeciesRecord from './state/SpeciesRecord';
-
-//curl -i -d '
-// {"criteriaType":"species","locationCriteria":[{"paramType":"subnation", "subnation": "NE", "nation":"US"}], "speciesTaxonomyCriteria": [{"paramType" : "scientificTaxonomy","level" : "KINGDOM","scientificTaxonomy" : "Plantae"}]}' 
-// -X POST "https://explorer.natureserve.org/api/data/speciesSearch" -H "Accept: application/json" -H "Content-Type: application/json; charset=UTF-8"
+import Pagination from './pagination/Pagination';
 
 const StateSearch = () => {
     const [result, setResult] = useState(undefined);
+    const [page, setPage] = useState(0);
+    const [recordsPerPage, setRecordsPerPage] = useState(20);
 
     useEffect(() => {
         axios.post(
             'https://cors-anywhere.herokuapp.com/https://explorer.natureserve.org/api/data/speciesSearch',
-            {"criteriaType":"species","locationCriteria":[{"paramType":"subnation", "subnation": "NE", "nation":"US"}], "speciesTaxonomyCriteria": [{"paramType" : "scientificTaxonomy","level" : "KINGDOM","scientificTaxonomy" : "Plantae"}]})
+            {
+                "criteriaType": "species",
+                "pagingOptions": {
+                    page,
+                    recordsPerPage
+                },
+                "locationCriteria":
+                    [{ "paramType": "subnation", "subnation": "NE", "nation": "US" }],
+                "speciesTaxonomyCriteria":
+                    [{ "paramType": "scientificTaxonomy", "level": "KINGDOM", "scientificTaxonomy": "Plantae" }]
+            })
             .then(resp => {
                 console.log(resp);
                 setResult(resp.data);
@@ -20,14 +29,23 @@ const StateSearch = () => {
             .catch(error => {
                 console.error(error);
             });
-    }, []);
+    }, [page, recordsPerPage]);
 
     return (
         <>
-            {result && (<p>Total species found for NE: {result.resultsSummary.speciesResults.total}</p>)}
-            {result && result.results.map((speciesRecord, i) => {
-                return <SpeciesRecord key={i} data={speciesRecord} />
-            })}
+            API Provided by https://explorer.natureserve.org/
+            <div className="pagination">
+                {result && result.resultsSummary && <Pagination resultsSummary={result.resultsSummary} setPage={setPage} setRecordsPerPage={setRecordsPerPage} />}
+            </div>
+            <div>
+                {result && (<p>Total species found for NE: {result.resultsSummary.speciesResults.total}</p>)}
+                {result && result.results.map((speciesRecord, i) => {
+                    return <SpeciesRecord key={i} data={speciesRecord} />
+                })}
+            </div>
+            <div className="pagination">
+                {result && result.resultsSummary && <Pagination resultsSummary={result.resultsSummary} setPage={setPage} setRecordsPerPage={setRecordsPerPage} />}
+            </div>
         </>
     );
 }

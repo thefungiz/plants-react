@@ -1,12 +1,14 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ReactHtmlParser from 'react-html-parser';
+import LoadImages from './LoadImages';
 
-const SpeciesRecord = ({data}) => {
+const SpeciesRecord = ({ data }) => {
     const [description, setDescription] = useState(undefined);
     const [loadingDescription, setLoadingDescription] = useState(false);
     const [imageSrc, setImageSrc] = useState(undefined);
     useEffect(() => {
+        setDescription(undefined);
         setLoadingDescription(true);
         if (data.scientificName) {
             axios.get(`https://cors-anywhere.herokuapp.com/https://en.wikipedia.org/w/api.php?action=query&titles=${data.scientificName}&prop=extracts&format=json&exintro=1`)
@@ -20,8 +22,9 @@ const SpeciesRecord = ({data}) => {
                     setLoadingDescription(false);
                 });
         }
-    }, []);
+    }, [data]);
     useEffect(() => {
+        setImageSrc(undefined);
         if (data.scientificName) {
             axios.get(`https://cors-anywhere.herokuapp.com/https://en.wikipedia.org/w/api.php?action=query&titles=${data.scientificName}&prop=pageimages&format=json&pithumbsize=250`)
                 .then(resp => {
@@ -34,18 +37,19 @@ const SpeciesRecord = ({data}) => {
                     console.error(error);
                 });
         }
-    }, []);
+    }, [data]);
     return (
         <div className="panel">
-            <h2>{data.scientificName}</h2>
-            <div>
-                {imageSrc && (<img className="pull-right" src={imageSrc} />)}
-                Primary Common Name: {data.primaryCommonName}<br/>
-                Family: {data.speciesGlobal.family}<br/>
-                Informal taxonomy: {data.speciesGlobal.informalTaxonomy}<br/>
-                Comments: {ReactHtmlParser(data.speciesGlobal.taxonomicComments)}
-                {loadingDescription ? (<p>Loading additional information...</p>) : ReactHtmlParser(description)}
+            {imageSrc && (<img className="pull-right" src={imageSrc} />)}
+            <h2><i>{data.scientificName}</i></h2>
+            <h4>Common name: {data.primaryCommonName}</h4>
+            <h4>Family: {data.speciesGlobal.family}</h4>
+            <div>Informal taxonomy: {data.speciesGlobal.informalTaxonomy}</div>
+            <div>Comments: {ReactHtmlParser(data.speciesGlobal.taxonomicComments)}</div>
+            <div><div>Wikipedia:</div>
+            {loadingDescription ? (<p>Loading additional information...</p>) : ReactHtmlParser(description)}
             </div>
+            <LoadImages name={data.scientificName} />
         </div>
     );
 };
