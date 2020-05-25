@@ -8,8 +8,7 @@ const KingdomDropDown = () => {
     const token = properties.token;
 
     const handleLoad = (linkPath, setState, callback) => {
-        let path = linkPath.substring(linkPath.indexOf('/api'));
-        axios.get(`${path}?token=${token}`)
+        axios.get(`https://cors-anywhere.herokuapp.com/${linkPath}?token=${token}`)
             .then(resp => {
                 setState(resp.data);
                 callback && callback();
@@ -20,12 +19,8 @@ const KingdomDropDown = () => {
             });
     }
 
-    const handleImageRequest = (name, setState) => {
-        // todo
-    }
-
     useEffect(() => {
-        handleLoad('/api/kingdoms', setKingdoms);
+        handleLoad('https://trefle.io/api/kingdoms', setKingdoms);
     }, []);
 
     return (
