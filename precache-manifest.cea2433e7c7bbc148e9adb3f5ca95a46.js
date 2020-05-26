@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0f8284f7946b17058415ac25ec0d43ce",
+    "revision": "89ae6c1c9b48e835ee729acdf17aae1c",
     "url": "/plants-react/index.html"
   },
   {
-    "revision": "8567cbbaff3fe31d2852",
+    "revision": "2e234cf455c8ac2f0f6a",
     "url": "/plants-react/static/css/main.72251ad0.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/plants-react/static/js/2.70cafbb4.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "8567cbbaff3fe31d2852",
-    "url": "/plants-react/static/js/main.08e5acee.chunk.js"
+    "revision": "2e234cf455c8ac2f0f6a",
+    "url": "/plants-react/static/js/main.cc10149e.chunk.js"
   },
   {
     "revision": "cdad8059eb2f1b5a55f1",
