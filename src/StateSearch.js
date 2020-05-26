@@ -26,6 +26,7 @@ const StateSearch = () => {
             })
             .then(resp => {
                 setResult(resp.data);
+                console.log(resp)
             })
             .catch(error => {
                 console.error(error);
