@@ -39,10 +39,10 @@ const LoadImages = ({ data }) => {
     return (
         <div>
             {images.length > 0 && images.map((image, i) => {
-                return <img className="image-fill-parent" key={i} src={image} />
+                return <img alt={image} className="image-fill-parent" key={i} src={image} />
             })}
             {!clicked &&
-                (<button onClick={() => getImages()} >Load Images</button>)
+                (<button onClick={() => getImages()} >Load Additional Images</button>)
             }
         </div>
     );
