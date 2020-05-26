@@ -8,7 +8,7 @@ const FamilyTree = () => {
     const token = properties.token;
 
     const handleLoad = (linkPath, setState, callback) => {
-        axios.get(`https://cors-anywhere.herokuapp.com/${linkPath}?token=${token}`)
+        axios.get(`${linkPath}?token=${token}`)
             .then(resp => {
                 setState(resp.data);
                 callback && callback();

@@ -12,7 +12,7 @@ const StateSearch = () => {
 
     useEffect(() => {
         axios.post(
-            'https://cors-anywhere.herokuapp.com/https://explorer.natureserve.org/api/data/speciesSearch',
+            `https://explorer.natureserve.org/api/data/speciesSearch`,
             {
                 "criteriaType": "species",
                 "pagingOptions": {
@@ -25,7 +25,6 @@ const StateSearch = () => {
                     [{ "paramType": "scientificTaxonomy", "level": "KINGDOM", "scientificTaxonomy": "Plantae" }]
             })
             .then(resp => {
-                console.log(resp);
                 setResult(resp.data);
             })
             .catch(error => {

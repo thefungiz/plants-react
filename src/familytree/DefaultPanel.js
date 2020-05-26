@@ -10,7 +10,7 @@ const DefaultPanel = ({ type, onLoad, data, setState }) => {
     useEffect(() => {
         setLoadingDescription(true);
         if (data.slug) {
-            axios.get(`https://cors-anywhere.herokuapp.com/https://en.wikipedia.org/w/api.php?action=query&titles=${data.slug}&prop=extracts&format=json&exintro=1`)
+            axios.get(`https://en.wikipedia.org/w/api.php?action=query&origin=*&titles=${data.slug}&prop=extracts&format=json&exintro=1`)
                 .then(resp => {
                     const result = Object.values(resp.data.query.pages)[0].extract;
                     setDescription(result ? result : '<p class="center">No description found</p>');
@@ -24,7 +24,7 @@ const DefaultPanel = ({ type, onLoad, data, setState }) => {
     }, []);
     useEffect(() => {
         if (data.slug) {
-            axios.get(`https://cors-anywhere.herokuapp.com/https://en.wikipedia.org/w/api.php?action=query&titles=${data.slug}&prop=pageimages&format=json&pithumbsize=250`)
+            axios.get(`https://en.wikipedia.org/w/api.php?action=query&origin=*&titles=${data.slug}&prop=pageimages&format=json&pithumbsize=250`)
                 .then(resp => {
                     const thumbnail = Object.values(resp.data.query.pages)[0].thumbnail;
                     if (thumbnail) {
