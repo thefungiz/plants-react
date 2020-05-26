@@ -33,27 +33,27 @@ const StateSearch = () => {
     }, [selectedState, page, recordsPerPage]);
 
     return (
-        <>
+        <div>
+            <h1>State Search</h1>
             API Provided by https://explorer.natureserve.org/
-            <div className="pagination">
-                {result && result.resultsSummary && <Pagination resultsSummary={result.resultsSummary} setPage={setPage} setRecordsPerPage={setRecordsPerPage} />}
-            </div>
-            <div>
-                Select a state:
+            <div className="row">
+                <div className="six columns">
+                    Select a state:
                 <select onChange={e => setSelectedState(e.currentTarget.value)}>
-                    {states.map((state, i) => { return <option key={state} value={state}>{state}</option> })}
-                </select>
+                        {states.map((state, i) => { return <option key={state} value={state}>{state}</option> })}
+                    </select>
+                    {result && (<p>Total species found for {selectedState}: {result.resultsSummary.speciesResults.total}</p>)}
+                </div>
+                <div className="six columns pagination">
+                    {result && result.resultsSummary && <Pagination resultsSummary={result.resultsSummary} setPage={setPage} setRecordsPerPage={setRecordsPerPage} />}
+                </div>
             </div>
             <div>
-                {result && (<p>Total species found for {selectedState}: {result.resultsSummary.speciesResults.total}</p>)}
                 {result && result.results.map((speciesRecord, i) => {
                     return <SpeciesRecord key={i} data={speciesRecord} />
                 })}
             </div>
-            <div className="pagination">
-                {result && result.resultsSummary && <Pagination resultsSummary={result.resultsSummary} setPage={setPage} setRecordsPerPage={setRecordsPerPage} />}
-            </div>
-        </>
+        </div>
     );
 }
 

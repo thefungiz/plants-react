@@ -14,7 +14,7 @@
     float: right;
 }
 .pagination {
-    float: right;
+    text-align: right;
 }
 .image-fill-parent {
     width: 100%;
@@ -36,6 +36,11 @@
     width: 80px;
 }
 .pag-button {
-    margin-left: 0.5em;
-    margin-right: 0.5em;
+    padding-left: .5em;
+    padding-right: .5em;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+}
+.pag-input {
+    width: 4em;
 }
