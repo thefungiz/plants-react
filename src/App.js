@@ -13,10 +13,10 @@ const App = () => {
   return (
     <HashRouter>
       <div>
-        <nav className="navbar pure-menu pure-menu-horizontal header-margin-bottom">
-          <a href="#" className="pure-menu-heading pure-menu-link ">Plants!</a>
+        <nav className="menu navbar pure-menu pure-menu-horizontal header-margin-bottom">
+          <a href="#" className="menu-link pure-menu-heading pure-menu-link "><img className="logo" src="https://freesvg.org/img/eco_spadassin_green_leaf_2_icon.png" /></a>
           {/* <NavLink className="pure-menu-heading pure-men u-link" to="/tree">Family Tree</NavLink> */}
-          <NavLink className="pure-menu-heading pure-menu-link" to="/state">State Search</NavLink>
+          <NavLink className="menu-link pure-menu-heading pure-menu-link" to="/state">State Search</NavLink>
         </nav>
         <ul className="header header-style">
         </ul>
