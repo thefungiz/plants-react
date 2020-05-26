@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/plants-react/static/css/main.72251ad0.chunk.css",
-    "main.js": "/plants-react/static/js/main.fdd57187.chunk.js",
-    "main.js.map": "/plants-react/static/js/main.fdd57187.chunk.js.map",
+    "main.js": "/plants-react/static/js/main.08e5acee.chunk.js",
+    "main.js.map": "/plants-react/static/js/main.08e5acee.chunk.js.map",
     "runtime-main.js": "/plants-react/static/js/runtime-main.aa2e0173.js",
     "runtime-main.js.map": "/plants-react/static/js/runtime-main.aa2e0173.js.map",
-    "static/js/2.1116768a.chunk.js": "/plants-react/static/js/2.1116768a.chunk.js",
-    "static/js/2.1116768a.chunk.js.map": "/plants-react/static/js/2.1116768a.chunk.js.map",
+    "static/js/2.70cafbb4.chunk.js": "/plants-react/static/js/2.70cafbb4.chunk.js",
+    "static/js/2.70cafbb4.chunk.js.map": "/plants-react/static/js/2.70cafbb4.chunk.js.map",
     "index.html": "/plants-react/index.html",
-    "precache-manifest.b0748af20ab5e5e5f16b39407f0a1b67.js": "/plants-react/precache-manifest.b0748af20ab5e5e5f16b39407f0a1b67.js",
+    "precache-manifest.a7572c24482db4b06b66ff66a260fcee.js": "/plants-react/precache-manifest.a7572c24482db4b06b66ff66a260fcee.js",
     "service-worker.js": "/plants-react/service-worker.js",
     "static/css/main.72251ad0.chunk.css.map": "/plants-react/static/css/main.72251ad0.chunk.css.map",
-    "static/js/2.1116768a.chunk.js.LICENSE.txt": "/plants-react/static/js/2.1116768a.chunk.js.LICENSE.txt"
+    "static/js/2.70cafbb4.chunk.js.LICENSE.txt": "/plants-react/static/js/2.70cafbb4.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.aa2e0173.js",
-    "static/js/2.1116768a.chunk.js",
+    "static/js/2.70cafbb4.chunk.js",
     "static/css/main.72251ad0.chunk.css",
-    "static/js/main.fdd57187.chunk.js"
+    "static/js/main.08e5acee.chunk.js"
   ]
 }
