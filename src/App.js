@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import StateSearch from './StateSearch';
+import StateSearch from './state/StateSearch';
 import Home from "./Home"
 import {
   Route,

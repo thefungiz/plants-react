@@ -7,6 +7,7 @@ const SpeciesRecord = ({ data }) => {
     const [wikipediaExtract, setWikipediaExtract] = useState(undefined);
     const [imageSrc, setImageSrc] = useState(undefined);
     useEffect(() => {
+        setImageSrc(undefined);
         setWikipediaExtract(undefined);
         if (data.scientificName) {
             axios.get(`https://en.wikipedia.org/w/api.php?action=query&origin=*&titles=${data.scientificName}&prop=extracts|info|pageimages&format=json&exintro=1&inprop=url&pithumbsize=250`)

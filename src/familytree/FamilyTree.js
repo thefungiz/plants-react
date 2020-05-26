@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Kingdom from './familytree/Kingdom';
+import Kingdom from './Kingdom';
 import axios from 'axios';
-import { properties } from './properties';
+import { properties } from '../properties';
 
 const FamilyTree = () => {
     const [kingdoms, setKingdoms] = useState([]);
