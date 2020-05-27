@@ -1,4 +1,4 @@
 
 export const properties = {
-    token: '' //prompt("Please enter API key. One can be created here - https://trefle.io/")// override this for easier local development
+    tokenPath: "https://us-central1-trefle-api-token.cloudfunctions.net/tokenGET"
 } 
