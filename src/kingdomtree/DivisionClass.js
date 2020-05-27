@@ -14,7 +14,7 @@ const DivisionClass = ({data, onLoad}) => {
 
     return (
         <div>
-            <DefaultPanel type="Division Class" onLoad={onLoad} data={divisionClass} setState={setDivisionClass} />
+            <DefaultPanel type="Class" onLoad={onLoad} data={divisionClass} setState={setDivisionClass} />
             <div className="margin-left">
                 {divisionOrders && divisionOrders.map((divisionOrder, i) => {
                     return <DivisionOrder key={i} onLoad={onLoad} data={divisionOrder} />

@@ -8,12 +8,12 @@ const LoadImages = ({ data }) => {
 
     const getImages = () => {
         setClicked(true);
-        axios.get(`https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&prop=images&titles=${data.scientificName}`)
+        axios.get(`https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&prop=images&titles=${data.scientificName}&redirects=1`)
         .then(resp => {
             const images = Object.values(resp.data.query.pages)[0].images;
             if (images) {
                 images.forEach(x => {
-                    axios.get(`https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&titles=${x.title}&prop=imageinfo&iiprop=url`)
+                    axios.get(`https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&titles=${x.title}&prop=imageinfo&iiprop=url&redirects=1`)
                     .then(response => {
                         const imageinfo = Object.values(response.data.query.pages)[0].imageinfo;
                         if (imageinfo) {

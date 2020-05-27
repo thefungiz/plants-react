@@ -10,7 +10,7 @@ const SpeciesRecord = ({ data }) => {
         setImageSrc(undefined);
         setWikipediaExtract(undefined);
         if (data.scientificName) {
-            axios.get(`https://en.wikipedia.org/w/api.php?action=query&origin=*&titles=${data.scientificName}&prop=extracts|info|pageimages&format=json&exintro=1&inprop=url&pithumbsize=250`)
+            axios.get(`https://en.wikipedia.org/w/api.php?action=query&origin=*&titles=${data.scientificName}&prop=extracts|info|pageimages&format=json&exintro=1&inprop=url&pithumbsize=250&redirects=1`)
                 .then(resp => {
                     const page = Object.values(resp.data.query.pages)[0];
                     if (page.extract) {

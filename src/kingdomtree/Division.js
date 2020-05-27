@@ -13,7 +13,7 @@ const Division = ({data, onLoad}) => {
 
     return (
         <div>
-            <DefaultPanel type="Division" onLoad={onLoad} data={division} setState={setDivision} />
+            <DefaultPanel type="Phylum" onLoad={onLoad} data={division} setState={setDivision} />
             <div className="margin-left">
                 {divisionClasses && divisionClasses.map((divisionClass, i) => {
                     return <DivisionClass key={i} onLoad={onLoad} data={divisionClass} />
